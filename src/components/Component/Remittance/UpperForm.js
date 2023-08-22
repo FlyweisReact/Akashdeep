@@ -20,9 +20,9 @@ const UpperForm = () => {
   const [tranferFrom, setTransferFrom] = useState("");
   const [transferTo, setTransferTo] = useState("");
   const [purposeName, setPurpose] = useState("");
-  const [receivingCurrencyName, setReceivingCurrency] = useState("");
+  const [recievingCurrencyName, setReceivingCurrency] = useState("");
   const [INRCurrencyName, setINRCurrency] = useState("");
-  const [receivingAmount, setReceivingAmt] = useState("");
+  const [recievingAmount, setReceivingAmt] = useState("");
 
 
   const getCities = async()=>{
@@ -53,14 +53,14 @@ const UpperForm = () => {
     e.preventDefault();
     const url = "https://akashdeep12.vercel.app/wireTransferr";
     try{
-      const res = await axios.post(url, {tranferFrom, transferTo, purposeName, receivingCurrencyName, INRCurrencyName, 
-        receivingAmount
+      const res = await axios.post(url, {tranferFrom, transferTo, purposeName, recievingCurrencyName, INRCurrencyName, 
+        recievingAmount
       })
       console.log(res?.data);
       if(monthlyImport_Export === "S1107"){
         navigate("/cash-free");
       }
-      //else navigate(`/Transaction-Details/${res?.data?.data?._id}`);
+      else navigate(`/Transaction-Details/${res?.data?._id}`);
     }catch(err){
       console.log(err.message);
     }
@@ -96,7 +96,7 @@ const UpperForm = () => {
     setForexAmt(amt);
     setReceivingAmt(amt);
     console.log(amt);
-    const url = `https://akashdeep12.vercel.app/betterRate/convertRate/${receivingCurrencyName}/${amt}`;
+    const url = `https://akashdeep12.vercel.app/betterRate/convertRate/${recievingCurrencyName}/${amt}`;
     console.log(url);
     try{
       const res = await axios.get(url);

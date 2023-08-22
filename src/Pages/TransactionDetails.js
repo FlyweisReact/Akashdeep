@@ -116,7 +116,7 @@ const TransactionDetails = () => {
   }
 
   const validatePin = async()=>{
-    const url = `https://akashdeep12.vercel.app/wireTransferr/pan/${id}`;
+    const url = `https://akashdeep-backend.vercel.app/pan/${id}`;
     try{
       const res = await axios.put(url, {
         pan:panNum
